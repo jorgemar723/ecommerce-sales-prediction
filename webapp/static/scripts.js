@@ -1,71 +1,64 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 🌙 Dark Mode Toggle
-    const darkModeToggle = document.getElementById("darkModeToggle");
+    const form = document.getElementById("predictionForm");
+    const predictionOutput = document.getElementById("predictionOutput");
+    const historyList = document.getElementById("history");
+    const toggleBtn = document.getElementById("darkModeToggle");
 
-    if (localStorage.getItem("darkMode") === "enabled") {
-        document.body.classList.add("dark-mode");
-    }
-
-    darkModeToggle.addEventListener("click", function () {
-        document.body.classList.toggle("dark-mode");
-        localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
-    });
-
-    // 🎯 Handle Prediction Form
-    document.getElementById("predictionForm").addEventListener("submit", async function(event) {
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        document.getElementById("loadingMessage").style.display = "block"; // Show loading message
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
 
-        const formData = new FormData(this);
-        const jsonData = {};
-        formData.forEach((value, key) => jsonData[key] = value);
+        fetch("/predict", {
+            method: "POST",
+            body: new URLSearchParams(formData),
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            if (result.prediction !== undefined) {
+                const rounded = parseFloat(result.prediction).toFixed(2);
+                predictionOutput.textContent = `Predicted Units Sold: ${rounded}`;
 
-        try {
-            const response = await fetch("/predict", {
-                method: "POST",
-                body: new URLSearchParams(jsonData),
-                headers: { "Content-Type": "application/x-www-form-urlencoded" }
-            });
+                const historyItem = document.createElement("li");
+                historyItem.className = "history-entry";
 
-            const result = await response.json();
-            document.getElementById("loadingMessage").style.display = "none"; // Hide loading message
+                const now = new Date().toLocaleString();
+                const formattedInputs = Object.entries(data)
+                    .map(([key, value]) => `${key}: ${value}`)
+                    .join("<br>");
 
-            if (result.prediction) {
-                document.getElementById("predictionOutput").textContent = `Predicted Units Sold: ${result.prediction}`;
-                updateHistory(jsonData, result.prediction);
+                historyItem.innerHTML = `
+                    <div class="history-header">
+                        <strong>Prediction:</strong> ${rounded} units
+                        <small style="float:right">${now}</small>
+                    </div>
+                    <em>Inputs:</em><br>
+                    ${formattedInputs}
+                `;
+                historyList.prepend(historyItem);
             } else {
-                alert("Error: " + result.error);
+                predictionOutput.textContent = "Prediction failed.";
             }
-        } catch (error) {
-            document.getElementById("loadingMessage").style.display = "none"; // Hide loading message
-            alert("Failed to send request. Please check input values.");
-        }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            predictionOutput.textContent = "Error occurred.";
+        });
     });
 
-    // 📝 Update Prediction History
-    function updateHistory(inputData, prediction) {
-        const historyList = document.getElementById("history");
-        const listItem = document.createElement("li");
+    toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
 
-        let formattedInputs = "<ul>";
-        for (const key in inputData) {
-            formattedInputs += `<li><strong>${key}:</strong> ${inputData[key]}</li>`;
-        }
-        formattedInputs += "</ul>";
-
-        listItem.innerHTML = `
-            <div class="history-item">
-                <strong>Prediction:</strong> <span class="highlight">${prediction} units</span>
-                <br>
-                <strong>Inputs:</strong> ${formattedInputs}
-            </div>
-        `;
-        historyList.prepend(listItem);
-    }
-
-    // 🚀 Clear History Button
-    document.getElementById("clearHistory").addEventListener("click", function() {
-        document.getElementById("history").innerHTML = "";
+        const isDark = document.body.classList.contains("dark-mode");
+        toggleBtn.textContent = isDark ? "🌞 Toggle Light Mode" : "🌙 Toggle Dark Mode";
     });
 });
+
+function clearHistory() {
+    const historyList = document.getElementById("history");
+    historyList.innerHTML = "";
+}

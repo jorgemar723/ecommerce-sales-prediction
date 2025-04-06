@@ -2,52 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Sales Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>E-Commerce Sales Prediction</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>E-commerce Sales Prediction</h1>
-
         <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
+        <h1>E-Commerce Sales Prediction</h1>
 
-        <form id="predictionForm" action="/predict" method="POST">
+        <form id="predictionForm">
             <label for="Revenue">Revenue:</label>
-            <input type="number" name="Revenue" required>
+            <input type="number" id="Revenue" name="Revenue" required>
 
             <label for="Discount_Applied">Discount Applied (%):</label>
-            <input type="number" name="Discount_Applied" step="0.01" required>
+            <input type="number" id="Discount_Applied" name="Discount_Applied" step="0.01" required>
 
             <label for="Clicks">Clicks:</label>
-            <input type="number" name="Clicks" required>
+            <input type="number" id="Clicks" name="Clicks" required>
 
             <label for="Impressions">Impressions:</label>
-            <input type="number" name="Impressions" required>
+            <input type="number" id="Impressions" name="Impressions" required>
 
             <label for="Conversion_Rate">Conversion Rate:</label>
-            <input type="number" name="Conversion_Rate" step="0.01" required>
+            <input type="number" id="Conversion_Rate" name="Conversion_Rate" step="0.01" required>
 
             <label for="Ad_Spend">Ad Spend:</label>
-            <input type="number" name="Ad_Spend" required>
+            <input type="number" id="Ad_Spend" name="Ad_Spend" required>
 
             <label for="Rolling_Mean_7">Rolling Mean (7 Days):</label>
-            <input type="number" name="Rolling_Mean_7" step="0.01" required>
+            <input type="number" id="Rolling_Mean_7" name="Rolling_Mean_7" required>
 
             <button type="submit">Predict</button>
         </form>
 
-        <p id="loadingMessage" style="display: none;">🔄 Processing...</p>
+        <div id="predictionOutput" class="result"></div>
 
-        <h2>Prediction Result: <span id="predictionOutput">-</span></h2>
-        
-        <h3>Prediction History</h3>
-        <button id="clearHistory">Clear History</button>
+        <h2>Prediction History</h2>
+        <button onclick="clearHistory()">Clear History</button>
         <ul id="history"></ul>
     </div>
 
-    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
-
+    <script src="../static/scripts.js"></script>
 </body>
 </html>
