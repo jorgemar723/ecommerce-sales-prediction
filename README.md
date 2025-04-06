@@ -130,6 +130,11 @@ All processing and training are done locally using CSV files
 📄 License
 Licensed under the MIT License.
 
+📄 Project Report
+
+The full technical report for this project can be found here:
+
+[📘 ProjectReport.pdf](./ProjectReport.pdf)
 
 👨‍💻 Author
 Jorge Martinez-Lopez
