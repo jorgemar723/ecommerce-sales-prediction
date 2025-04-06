@@ -6,7 +6,16 @@ This project predicts units sold for e-commerce products using historical, synth
 
 ## 📁 Project Structure
 
-E-Commerce Sales/ │ ├── data/ # Raw and processed datasets │ └── processed_ecommerce_data.csv │ ├── models/ # Trained ML model │ └── xgboost_ecommerce_model.pkl │ ├── plots/ # Visualizations for the report │ ├── actual_vs_predicted.png │ └── feature_importance.png │ ├── src/ # Core scripts │ ├── data_preprocessing.py │ ├── train_model.py │ ├── generate_plots.py │ └── predict.py │ ├── webapp/ # Flask frontend │ ├── app.py │ ├── static/ │ │ ├── style.css │ │ └── scripts.js │ └── templates/ │ └── index.html │ ├── ProjectReport.tex # Final LaTeX report (compiled separately) └── README.md
+E-Commerce Sales/ │ 
+├── data/ # Raw and processed datasets │ └── processed_ecommerce_data.csv │
+├── models/ # Trained ML model │ └── xgboost_ecommerce_model.pkl │ 
+├── plots/ # Visualizations for the report │ ├── actual_vs_predicted.png │ └── feature_importance.png │ 
+├── src/ # Core scripts │ ├── data_preprocessing.py │ ├── train_model.py │ ├── generate_plots.py │ └── predict.py │ 
+├── webapp/ # Flask frontend │ ├── app.py │ 
+├── static/ │ │ ├── style.css │ │ └── scripts.js 
+│ └── templates/ │ └── index.html │ 
+├── ProjectReport.tex # Final LaTeX report (compiled separately) 
+└── README.md
 
 
 ---
