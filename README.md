@@ -35,10 +35,6 @@ E-Commerce Sales/
 ├── ProjectReport.tex           # Final LaTeX report (compiled separately)
 └── README.md
 ```
-
-
-
-
 ---
 
 ## 🚀 Features
@@ -72,7 +68,7 @@ E-Commerce Sales/
 
 ### 1. Clone the repository
 
-```bash
+```
 git clone https://github.com/jorgemar723/ecommerce-sales-prediction.git
 cd ecommerce-sales-prediction
 
@@ -116,7 +112,7 @@ cd ../webapp
 python app.py
 
 Then open http://127.0.0.1:5000 in your browser.
-
+```
 
 📝 Assumptions & Notes
 Dataset is synthetic and pre-cleaned
@@ -130,19 +126,7 @@ All processing and training are done locally using CSV files
 📄 License
 Licensed under the MIT License.
 
-📄 Project Report
-
-The full technical report for this project can be found here:
-
-[📘 ProjectReport.pdf](./ProjectReport.pdf)
-
 👨‍💻 Author
 Jorge Martinez-Lopez
 Project for CS 4347 - Machine Learning
 Texas State University, Spring 2025
-
-
-
-
-
-
