@@ -128,5 +128,7 @@ Licensed under the MIT License.
 
 ## 👨‍💻 Author
 Jorge Martinez-Lopez
+
 Project for CS 4347 - Intro to Machine Learning
+
 Texas State University, Spring 2025
