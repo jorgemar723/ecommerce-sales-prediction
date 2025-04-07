@@ -114,7 +114,7 @@ python app.py
 Then open http://127.0.0.1:5000 in your browser.
 ```
 
-📝 Assumptions & Notes
+## 📝 Assumptions & Notes
 Dataset is synthetic and pre-cleaned
 
 The model only supports 7 input features
@@ -123,10 +123,10 @@ Features were reduced from 19 → 7 to streamline UI and improve interpretabilit
 
 All processing and training are done locally using CSV files
 
-📄 License
+## 📄 License
 Licensed under the MIT License.
 
-👨‍💻 Author
+## 👨‍💻 Author
 Jorge Martinez-Lopez
-Project for CS 4347 - Machine Learning
+Project for CS 4347 - Intro to Machine Learning
 Texas State University, Spring 2025
