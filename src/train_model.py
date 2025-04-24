@@ -36,4 +36,4 @@ model_path = "../models/xgboost_ecommerce_model.pkl"
 with open(model_path, "wb") as file:
     pickle.dump(model, file)
 
-print(f"✅ Model saved to {model_path}")
+print(f"Model saved to {model_path}")
