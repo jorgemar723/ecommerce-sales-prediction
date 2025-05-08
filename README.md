@@ -1,10 +1,10 @@
-# 🛒 E-Commerce Sales Prediction
+# E-Commerce Sales Prediction
 
 This project predicts units sold for e-commerce products using historical, synthetically generated data. It combines machine learning (XGBoost), clean data preprocessing, and a user-friendly Flask web interface. It’s ideal for exploring sales forecasting, UI design, and regression-based modeling.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 E-Commerce Sales/
@@ -37,7 +37,7 @@ E-Commerce Sales/
 ```
 ---
 
-## 🚀 Features
+## Features
 
 - Predicts units sold from 7 key features
 - Web interface with TXST-themed light/dark mode toggle
@@ -47,7 +47,7 @@ E-Commerce Sales/
 
 ---
 
-## 🧠 Model & Dataset
+## Model & Dataset
 
 - **Model:** XGBoost Regressor
 - **Target:** `Units_Sold`
@@ -64,7 +64,7 @@ E-Commerce Sales/
 
 ---
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the repository
 
@@ -83,7 +83,7 @@ conda activate CS4347
 
 pip install -r requirements.txt
 
-🔍 Usage
+Usage
 
 1. Preprocess Data
 
